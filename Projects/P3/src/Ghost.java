@@ -22,8 +22,7 @@ public class Ghost {
     }
     int ran_index = (int)(Math.random() * valid_moves.size());
     this.myLoc = valid_moves.get(ran_index);
-    this.myMap.move(this.myName, this.myLoc, Map.Type.GHOST);
-    return true;
+    return this.myMap.move(this.myName, this.myLoc, Map.Type.GHOST);
   }
 
   public boolean is_pacman_in_range() {
