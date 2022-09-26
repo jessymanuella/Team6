@@ -75,7 +75,6 @@ public class Map {
       if (ret != null) {
         Location cookieLoc = locations.remove(name);
         field.get(cookieLoc).remove(Type.COOKIE);
-        field.get(cookieLoc).add(Type.EMPTY);
         cookies--; 
         return ret;
       }
