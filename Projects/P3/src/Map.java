@@ -59,7 +59,7 @@ public class Map {
       Location oldLoc = locations.get(name);
       field.get(oldLoc).remove(type);
       // case where nothing is left in old spot
-      if(field.get(oldLoc).size() == 0) {
+      if(field.get(oldLoc).isEmpty()) {
         field.put(oldLoc, emptySet);
       }
       field.get(loc).add(type);
