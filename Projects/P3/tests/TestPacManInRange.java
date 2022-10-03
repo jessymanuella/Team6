@@ -22,5 +22,4 @@ public class TestPacManInRange extends TestCase {
 
     assertTrue(ghost.is_pacman_in_range(), false);
   }
-
 }
