@@ -32,6 +32,6 @@ public class PacMan {
   }
 
   public JComponent consume() {
-    return null;
+    return myMap.eatCookie("tok_x" + myLoc.x + "_y" + myLoc.y);
   }
 }
