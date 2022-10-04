@@ -52,6 +52,10 @@ public class Map {
   }
 
   public boolean move(String name, Location loc, Type type) {
+  
+    if (field.get(loc).isNull()) { 
+      field.put(loc, new hashSet<Type>()); 
+    }
     // update locations, components, and field
     // use the setLocation method for the component to move it to the new location
     if(field.get(loc).isNull() || !field.get(loc).contains(Map.Type.WALL)) {
