@@ -50,19 +50,17 @@ public class Map {
 
   public boolean move(String name, Location loc, Type type) {
   
-    if (field.get(loc).isNull()) { 
-      field.put(loc, new hashSet<Type>()); 
+    if (field.get(loc) == null) { 
+      field.put(loc, new HashSet<Type>()); 
     }
     // update locations, components, and field
     // use the setLocation method for the component to move it to the new location
-    if(field.get(loc).isNull() || !field.get(loc).contains(Map.Type.WALL)) {
+    if(!field.get(loc).contains(Map.Type.WALL)) {
       // old location
       Location oldLoc = locations.get(name);
       field.get(oldLoc).remove(type);
       // case where nothing is left in old spot
-      if(field.get(oldLoc).isEmpty()) {
-        field.put(oldLoc, Map.Type.EMPTY);
-      }
+
       field.get(loc).add(type);
       components.get(name).setLocation(loc.x, loc.y);
       locations.put(name, loc);
