@@ -37,7 +37,10 @@ public class Map {
   }
 
   public void add(String name, Location loc, JComponent comp, Type type) {
-    return;
+    locations.put(name, loc);
+    components.put(name, comp);
+    if (!field.containsKey(loc)) field.put(loc, new HashSet<Type>());
+    field.get(loc).add(type);
   }
 
   public int getCookies() {
