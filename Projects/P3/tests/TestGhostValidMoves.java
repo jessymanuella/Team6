@@ -17,7 +17,7 @@ public class TestGhostValidMoves extends TestCase {
     Ghost ghost = frame.addGhost(new Location(1, 1), "Inky", Color.BLUE);
     boolean found = true;
     for(Location loc : ghost.get_valid_moves()) {
-      if(!loc.equals(new Location(1, 2)) || !loc.equals(new Location(2, 1))) {
+      if(!(loc.equals(new Location(1, 2)) || loc.equals(new Location(2, 1)))) {
         found = false;
       }
     }
