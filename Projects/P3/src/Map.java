@@ -37,10 +37,7 @@ public class Map {
   }
 
   public void add(String name, Location loc, JComponent comp, Type type) {
-    locations.put(name, loc);
-    components.put(name, comp);
-    if (!field.containsKey(loc)) field.put(loc, new HashSet<Type>());
-    field.get(loc).add(type);
+    return;
   }
 
   public int getCookies() {
@@ -77,18 +74,61 @@ public class Map {
   }
 
   public HashSet<Type> getLoc(Location loc) {
-    // wallSet and emptySet will help you write this method
-    return null;
+    if (field.containsKey(loc)) {
+      HashSet<Type> set = field.get(loc);
+      if (!set.isEmpty()) {
+        return set;
+      }
+    }
+    return emptySet;
   }
 
-  public boolean attack(String Name) {
+  public boolean attack(String name) {
     // update gameOver
+    // update locations, components, field, and cookies
+    // the id for a cookie at (10, 1) is tok_x10_y1
+
+    // check if game is not over and the name exists on the gameboard
+    if (!isGameOver() && locations.containsKey(name)) {
+
+      // get the location of the name
+      Location ghost = locations.get(name);
+
+      // Check if Pacman is in range
+      if (field.get(ghost.shift(0, 1)).contains(Type.PACMAN)) {
+        move(name, (ghost.shift(0, 1)), Type.GHOST);
+
+      } else if (field.get(ghost.shift(1, 0)).contains(Type.PACMAN)) {
+        move(name, (ghost.shift(1, 0)), Type.GHOST);
+
+      } else if (field.get(ghost.shift(-1, 0)).contains(Type.PACMAN)) {
+        move(name, (ghost.shift(-1, 0)), Type.GHOST);
+
+      } else if (field.get(ghost.shift(0, -1)).contains(Type.PACMAN)) {
+        move(name, (ghost.shift(0, -1)), Type.GHOST);
+
+      } else { // pacman not in range
+        return false;
+      }
+
+      // in range, update gameOver
+      gameOver = true;
+      return gameOver;
+    }
+
+    // ghost doesn't exist or game is over
     return false;
   }
 
   public JComponent eatCookie(String name) {
     // update locations, components, field, and cookies
     // the id for a cookie at (10, 1) is tok_x10_y1
-    return null;
+    JComponent ret = components.remove(name);
+    if (ret != null) {
+      Location cookieLoc = locations.remove(name);
+      field.get(cookieLoc).remove(Type.COOKIE);
+      cookies++; 
+    }
+    return ret;
   }
 }
