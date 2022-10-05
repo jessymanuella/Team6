@@ -21,6 +21,10 @@ To test, I first added a test that assessed whether a valid position would be re
 
 ### is_ghost_in_range
 
+To check if a ghost is one move away, the method checks the location of Pacman and and checks if a ghost type is in one of the 4 moves (left, right, up, down). The method returns true when a ghost is in range and false if no ghost is in range.
+
+To test, I added a test that tests for when a ghost is in Pacmans range, asserting the method result in true. Then I added another test where a ghost is out of Pacmans range, resulting in false. 
+
 ### consume
 
 ## Ghost Class
@@ -35,6 +39,10 @@ To test, I first added a test that assessed whether a valid position would be re
 
 ### is_pacman_in_range
 
+To check if a Pacman is one move away, the method checks the location of the ghost and and checks if Pacman is in one of the 4 moves (left, right, up, down). The method returns true when Pacman is out of a ghosts range.
+
+To test, I added a test that tests for when Pacman is in a ghosts range, asserting the method result in true. Then I added another test where Pacman is out of ghosts range, resulting in false.
+
 ### attack
 
 ## Map Class
@@ -48,6 +56,10 @@ To test move, I first tested an invalid move to ensure that pacman could not be 
 ### getLoc
 
 ### attack
+
+The attack method will check if the name parameter is valid and exist in the game and checks if the game over boolean value is false. The method will get the ghosts location associated with the parameter name and check if Pacman is one move away. If this is true, the game will move the ghost to Pacmans spot, "consuming" Pacman and the game is over, returning true. Else the method returns false and the game continues. 
+
+To test attack, I added a test that tests for when Pacman is in a ghosts range and the ghost can attack Pacman, asserting the method result in true. Then I added another test where Pacman is out of ghosts range for an attack, resulting in false.
 
 ### eatCookie
 
