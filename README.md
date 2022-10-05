@@ -2,10 +2,12 @@
 By Vivian Chen, Luke Muratore, Annemarie Peek, Lauren Wei
 
 ## Image of Code Playing PacMan
+![Pacman game running](Projects/P3/src/assets/Screen%20Shot%202022-10-05%20at%206.58.11%20PM.png)
 
 ## Running from Command Line
-  ```
-   code to run from command line
+  ```bash
+  javac -cp "src/" src/*.java
+  java -cp "src/" StartMenu
   ```
 ## Functions
 
