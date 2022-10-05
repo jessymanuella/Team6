@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.security.GuardedObject;
+import java.io.*;
 
 import junit.framework.*;
 
@@ -11,7 +12,7 @@ public class TestMapAttack extends TestCase {
     Ghost ghost = frame.addGhost(new Location(1, 2), "Pinky", Color.PINK);
     Map myMap = frame.getMap();
 
-    assertTrue(myMap.attack("Pinky"), true);
+    assertTrue(myMap.attack("Pinky") == true);
 
   }
 
@@ -21,7 +22,7 @@ public class TestMapAttack extends TestCase {
     Ghost ghost = frame.addGhost(new Location(4, 6), "Pinky", Color.PINK);
     Map myMap = frame.getMap();
 
-    assertTrue(myMap.attack("Pinky"), false);
+    assertTrue(myMap.attack("Pinky") == false);
 
   }
 }

@@ -1,5 +1,6 @@
 import java.io.*;
 import junit.framework.*;
+import java.awt.Color;
 
 public class TestGhostInRange extends TestCase {
 
@@ -9,7 +10,7 @@ public class TestGhostInRange extends TestCase {
     Ghost ghost = frame.addGhost(new Location(1, 2), "Pinky", Color.PINK);
     Map myMap = frame.getMap();
 
-    assertTrue(pacman.is_ghost_in_range(), true);
+    assertTrue(pacman.is_ghost_in_range() == true);
   }
 
   public void testGhostOutRange() throws FileNotFoundException {
@@ -18,6 +19,6 @@ public class TestGhostInRange extends TestCase {
     Ghost ghost = frame.addGhost(new Location(4, 6), "Pinky", Color.PINK);
     Map myMap = frame.getMap();
 
-    assertTrue(pacman.is_ghost_in_range(), false);
+    assertTrue(pacman.is_ghost_in_range() == false);
   }
 }
