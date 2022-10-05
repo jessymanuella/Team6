@@ -41,6 +41,10 @@ To test, I first added a test that assessed whether a valid position would be re
 
 ### move
 
+To move a given PacMan or Ghost in the map class, I ensure that a wall is not in the new location, and if not, I modify the fields in the map class related to the location of objects to represent the addition of the object into the new spot and the removal from the old one. I then return if the operation was successful, ie if there was not a wall in the new location.
+
+To test move, I first tested an invalid move to ensure that pacman could not be moved to a place on the map with a wall, and then tested a valid move by attempting to move pacman to an empty space. 
+
 ### getLoc
 
 ### attack
