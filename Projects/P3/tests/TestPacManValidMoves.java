@@ -17,7 +17,6 @@ public class TestPacManValidMoves extends TestCase {
     boolean found = true;
     for(Location loc : pacman.get_valid_moves()) {
       if(!(loc.equals(new Location(1, 2)) || loc.equals(new Location(2, 1)))) {
-        System.out.println(loc.x + ", " + loc.y);
         found = false;
       }
     }
