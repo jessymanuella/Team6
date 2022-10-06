@@ -2,10 +2,11 @@
 By Vivian Chen, Luke Muratore, Annemarie Peek, Lauren Wei
 
 ## Image of Code Playing PacMan
-![Pacman game running](Projects/P3/src/assets/Screen%20Shot%202022-10-05%20at%206.58.11%20PM.png)
+![Pacman start menu](Projects/P3/src/assets/Screen%20Shot%202022-10-05%20at%208.04.55%20PM.png) ![Pacman game running](Projects/P3/src/assets/Screen%20Shot%202022-10-05%20at%206.58.11%20PM.png)
 
 ## Running from Command Line
   ```bash
+  cd Projects/P3 # make sure you're in the p3 directory
   javac -cp "src/" src/*.java
   java -cp "src/" StartMenu
   ```
@@ -29,6 +30,10 @@ To test, I added a test that tests for when a ghost is in Pacmans range, asserti
 
 ### consume
 
+This method depends on the eatCookie method of the Map class by passing to that method the name of a cookie that would be in Pacman's current location. It returns the return value of eatCookie.
+
+For the test, I set up a NoFrame object (which initializes all the cookies). I place Pacman at a known location with a cookie and have Pacman consume it. I'm checking the return value is valid and that we recorded the eaten cookie in our map. Then I have pacman consume a cookie in the same location and test to make sure that the cookie was actually consumed. 
+
 ## Ghost Class
 
 ### get_valid_moves
@@ -46,6 +51,10 @@ To check if a Pacman is one move away, the method checks the location of the gho
 To test, I added a test that tests for when Pacman is in a ghosts range, asserting the method result in true. Then I added another test where Pacman is out of ghosts range, resulting in false.
 
 ### attack
+
+This method first calls is_pacman_in_range(), and if it's true, then it returns the return value of the attack method in the Map class passing in the name of the ghost doing the attacking. Else, it returns false. 
+
+To test this I set up a NoFrame object. I add pacman to a location and then I add two ghosts, one within attacking range and another outside of attacking range. Then I check to make sure that the first ghost can successfully attack and that the second ghost cannot make an attack. 
 
 ## Map Class
 
@@ -65,3 +74,6 @@ To test attack, I added a test that tests for when Pacman is in a ghosts range a
 
 ### eatCookie
 
+This method takes in a string that's the name of a cookie that might be in the map. We try to remove it from the components hashmap. If the mapping exists, we remove the cookie from the locations hashmap as well as the Type COOKIE from the hashset mapped to that location on the field. Then lastly we increment the cookie count. If the mappy doesn't exist, we return null.
+
+To test this, I create a NoFrame object which has a cookie in the location (1, 1). I then call eatCookie to eat that cookie, and check to make sure the cookie is eaten and cookie count has been incremented. Then we try to eatCookie that same cookie, which shouldn't exist now, and check to make sure it was eaten and the cookie count doesn't increase again. 
