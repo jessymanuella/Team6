@@ -21,6 +21,10 @@ To test, I first added a test that assessed whether a valid position would be re
 
 ### move
 
+To move the pacman, the function first retrieves the possible locations by calling get_valid_moves. If there is no valid location to move to, it returns false. Otherwise, it randomly selects a location out of the possible locations and moves the pacman to that location on the map. If moving pacman to the location is possible according to Map.move, then it returns true; otherwise, false is returned.
+
+To test, I added a test to tests for when there is no valid locations to move to, the move function returns false. When there are valid moves, the test also checks if the pacman moves to a location out of the possible valid locations.
+
 ### is_ghost_in_range
 
 To check if a ghost is one move away, the method checks the location of Pacman and and checks if a ghost type is in one of the 4 moves (left, right, up, down). The method returns true when a ghost is in range and false if no ghost is in range.
@@ -39,6 +43,10 @@ To test, I first added a test that assessed whether a valid position would be re
 
 ### move
 
+To move the ghost, the function first retrieves the possible locations by calling get_valid_moves. If there is no valid location to move to, it returns false. Otherwise, it randomly selects a location out of the possible locations and moves the ghost to that location on the map. If moving ghost to the location is possible according to Map.move, then it returns true; otherwise, false is returned.
+
+To test, I added a test to ensure that when the ghost moves, it moves to a valid location according to get_valid_moves.
+
 ### is_pacman_in_range
 
 To check if a Pacman is one move away, the method checks the location of the ghost and and checks if Pacman is in one of the 4 moves (left, right, up, down). The method returns true when Pacman is out of a ghosts range.
@@ -56,6 +64,10 @@ To move a given PacMan or Ghost in the map class, I ensure that a wall is not in
 To test move, I first tested an invalid move to ensure that pacman could not be moved to a place on the map with a wall, and then tested a valid move by attempting to move pacman to an empty space. 
 
 ### getLoc
+
+To get what is at the given location, the function first checks if there is anything at the location. If not, it returns a HashSet with Type.EMPTY. Otherwise, it returns a HashSet of the objects at the location.
+
+To test getLoc, I first added a pacman to an empty location. The test then asserts that after adding the pacman, calling getLoc on the location returns a HashSet with Type.PACMAN.
 
 ### attack
 
