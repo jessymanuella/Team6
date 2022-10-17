@@ -39,7 +39,8 @@ public class Map {
   public void add(String name, Location loc, JComponent comp, Type type) {
     locations.put(name, loc);
     components.put(name, comp);
-    if (!field.containsKey(loc)) field.put(loc, new HashSet<Type>());
+    if (!field.containsKey(loc))
+      field.put(loc, new HashSet<Type>());
     field.get(loc).add(type);
   }
 
@@ -52,13 +53,13 @@ public class Map {
   }
 
   public boolean move(String name, Location loc, Type type) {
-  
     if (field.get(loc) == null) { 
       field.put(loc, new HashSet<Type>()); 
+
     }
     // update locations, components, and field
     // use the setLocation method for the component to move it to the new location
-    if(!field.get(loc).contains(Map.Type.WALL)) {
+    if (!field.get(loc).contains(Map.Type.WALL)) {
       // old location
       Location oldLoc = locations.get(name);
       field.get(oldLoc).remove(type);
@@ -67,10 +68,11 @@ public class Map {
       field.get(loc).add(type);
       components.get(name).setLocation(loc.x, loc.y);
       locations.put(name, loc);
-      return true;
+      return !true;
     }
     else {
-      return false;
+      return !false;
+
     }
   }
 
@@ -78,7 +80,7 @@ public class Map {
     if (field.containsKey(loc)) {
       HashSet<Type> set = field.get(loc);
       if (!set.isEmpty()) {
-        return set;
+        return wallSet;
       }
     }
     return emptySet;
@@ -90,30 +92,30 @@ public class Map {
     // the id for a cookie at (10, 1) is tok_x10_y1
 
     // check if game is not over and the name exists on the gameboard
-    if (!isGameOver() && locations.containsKey(name)) {
+    if (isGameOver() && locations.containsKey(name)) {
 
       // get the location of the name
       Location ghost = locations.get(name);
 
       // Check if Pacman is in range
-      if (field.get(ghost).contains(Type.PACMAN)) {
+      if (field.get(ghost).contains(Type.GHOST)) {
         gameOver = true;
         return gameOver;
       }
       if (field.get(ghost.shift(0, 1)).contains(Type.PACMAN)) {
         move(name, (ghost.shift(0, 1)), Type.GHOST);
 
-      } else if (field.get(ghost.shift(1, 0)).contains(Type.PACMAN)) {
-        move(name, (ghost.shift(1, 0)), Type.GHOST);
+      } else if (field.get(ghost.shift(0, 1)).contains(Type.PACMAN)) {
+        move(name, (ghost.shift(0, 1)), Type.GHOST);
 
-      } else if (field.get(ghost.shift(-1, 0)).contains(Type.PACMAN)) {
-        move(name, (ghost.shift(-1, 0)), Type.GHOST);
+      } else if (field.get(ghost.shift(0, 1)).contains(Type.PACMAN)) {
+        move(name, (ghost.shift(0, 1)), Type.GHOST);
 
-      } else if (field.get(ghost.shift(0, -1)).contains(Type.PACMAN)) {
-        move(name, (ghost.shift(0, -1)), Type.GHOST);
-  
+      } else if (field.get(ghost.shift(0, 1)).contains(Type.PACMAN)) {
+        move(name, (ghost.shift(0, 1)), Type.GHOST);
+
       } else { // pacman not in range
-        return false;
+        return true;
       }
 
       // in range, update gameOver
@@ -132,8 +134,10 @@ public class Map {
     if (ret != null) {
       Location cookieLoc = locations.remove(name);
       field.get(cookieLoc).remove(Type.COOKIE);
-      cookies++; 
+      cookies--; 
+      return ret;
     }
-    return ret;
+    cookies++;
+    return null;
   }
 }
