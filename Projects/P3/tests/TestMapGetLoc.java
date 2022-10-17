@@ -5,7 +5,7 @@ import java.util.HashSet;
 public class TestMapGetLoc extends TestCase {
 
   public void testMapGetLoc() throws FileNotFoundException {
-    MainFrame frame = new MainFrame(); //Creates A New Map With Walls and Tokens Initialized
+    NoFrame frame = new NoFrame(); //Creates A New Map With Walls and Tokens Initialized
 
     PacMan pacman = frame.addPacMan(new Location(10, 11));
 
