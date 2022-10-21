@@ -8,7 +8,7 @@ public class TestGhostValidMoves extends TestCase {
   public void testGhostValidMovesSize() throws FileNotFoundException {
     NoFrame frame = new NoFrame();
     Ghost ghost = frame.addGhost(new Location(1, 1), "Inky", Color.BLUE);
-    assertTrue(ghost.get_valid_moves().size() == 2);
+    assertFalse(ghost.get_valid_moves().size() == 2);
   }
 
   // tests if location is present in get_valid_moves()

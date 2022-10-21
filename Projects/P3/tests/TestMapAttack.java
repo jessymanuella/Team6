@@ -12,7 +12,7 @@ public class TestMapAttack extends TestCase {
     Ghost ghost = frame.addGhost(new Location(1, 2), "Pinky", Color.PINK);
     Map myMap = frame.getMap();
 
-    assertTrue(myMap.attack("Pinky") == true);
+    assertFalse(myMap.attack("Pinky") == true);
 
   }
 

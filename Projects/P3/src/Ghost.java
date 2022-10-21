@@ -29,8 +29,7 @@ public class Ghost {
     if(!myMap.getLoc(myLoc.shift(0, -1)).contains(Map.Type.WALL)) {
       moves.add(myLoc.shift(0, -1));
     }
-    ArrayList<Location> fake_list = new ArrayList<Location>();
-    return fake_list;
+    return moves;
   }
 
   public boolean move() {

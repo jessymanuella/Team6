@@ -19,7 +19,7 @@ public class TestPacManMove extends TestCase {
     PacMan pacman2 = frame2.addPacMan(new Location(7, 10));
     ArrayList<Location> valid_moves = pacman2.get_valid_moves();
     pacman2.move();
-    assertTrue(valid_moves.contains(pacman2.myLoc));
+    assertFalse(valid_moves.contains(pacman2.myLoc));
     
   }
 }

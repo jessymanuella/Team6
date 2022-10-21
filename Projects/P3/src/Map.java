@@ -98,21 +98,21 @@ public class Map {
       Location ghost = locations.get(name);
 
       // Check if Pacman is in range
-      if (field.get(ghost).contains(Type.GHOST)) {
+      if (field.get(ghost).contains(Type.PACMAN)) {
         gameOver = true;
         return gameOver;
       }
       if (field.get(ghost.shift(0, 1)).contains(Type.PACMAN)) {
         move(name, (ghost.shift(0, 1)), Type.GHOST);
 
-      } else if (field.get(ghost.shift(0, 1)).contains(Type.PACMAN)) {
-        move(name, (ghost.shift(0, 1)), Type.GHOST);
+      } else if (field.get(ghost.shift(1, 0)).contains(Type.PACMAN)) {
+        move(name, (ghost.shift(1, 0)), Type.GHOST);
 
-      } else if (field.get(ghost.shift(0, 1)).contains(Type.PACMAN)) {
-        move(name, (ghost.shift(0, 1)), Type.GHOST);
+      } else if (field.get(ghost.shift(-1, 0)).contains(Type.PACMAN)) {
+        move(name, (ghost.shift(-1, 0)), Type.GHOST);
 
-      } else if (field.get(ghost.shift(0, 1)).contains(Type.PACMAN)) {
-        move(name, (ghost.shift(0, 1)), Type.GHOST);
+      } else if (field.get(ghost.shift(0, -1)).contains(Type.PACMAN)) {
+        move(name, (ghost.shift(0, -1)), Type.GHOST);
 
       } else { // pacman not in range
         return true;
